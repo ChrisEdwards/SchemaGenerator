@@ -1,5 +1,5 @@
 -----------------------------------------------------------------------------------------
-USE OrderSystem
+USE HomeOfficeBilling
 GO
 -----------------------------------------------------------------------------------------
 
@@ -16,7 +16,7 @@ GO
 -----------------------------------------------------------------------------------------
 RAISERROR('Creating foreign key: LineItems_ForeignKey_Products...',0,0) WITH NOWAIT;
 ALTER TABLE OrderSystem.dbo.LineItems
-   ADD CONSTRAINT LineItems_ForeignKey_Products  FOREIGN KEY (ProductId) 
+   ADD CONSTRAINT LineItems_ForeignKey_Products  FOREIGN KEY (ProductId)
        REFERENCES OrderSystem.dbo.Products (ProductId);
 GO
------------------------------------------------------------------------------------------	
+-----------------------------------------------------------------------------------------

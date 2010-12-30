@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="RUBY_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] rainbow (v1.1, C:/Ruby192/lib/ruby/gems/1.9.1/gems/rainbow-1.1)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] win32console (v1.3.0, C:/Ruby192/lib/ruby/gems/1.9.1/gems/win32console-1.3.0-x86-mingw32)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] activesupport (v3.0.3, C:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.0.3)" level="application" />
+  </component>
+</module>
+

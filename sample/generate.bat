@@ -1,1 +1,1 @@
-..\src\schemagen.rb -c config.yml
+..\src\schemagen.rb -c config.yml --clean

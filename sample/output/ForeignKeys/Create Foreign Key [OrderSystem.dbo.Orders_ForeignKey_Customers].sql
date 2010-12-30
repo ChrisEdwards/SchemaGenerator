@@ -1,5 +1,5 @@
 -----------------------------------------------------------------------------------------
-USE OrderSystem
+USE HomeOfficeBilling
 GO
 -----------------------------------------------------------------------------------------
 
@@ -16,7 +16,7 @@ GO
 -----------------------------------------------------------------------------------------
 RAISERROR('Creating foreign key: Orders_ForeignKey_Customers...',0,0) WITH NOWAIT;
 ALTER TABLE OrderSystem.dbo.Orders
-   ADD CONSTRAINT Orders_ForeignKey_Customers  FOREIGN KEY (CustomerId) 
+   ADD CONSTRAINT Orders_ForeignKey_Customers  FOREIGN KEY (CustomerId)
        REFERENCES OrderSystem.dbo.Customers (CustomerId);
 GO
------------------------------------------------------------------------------------------	
+-----------------------------------------------------------------------------------------

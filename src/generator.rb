@@ -4,6 +4,7 @@ require 'Table'
 require 'Column'
 require 'Constraint'
 require 'Log'
+require 'foreign_key_sql_generator'
 
 class Generator
 
@@ -32,16 +33,18 @@ class Generator
     end
 
     # Convert relative paths to absolute paths.
-    @table_source_folder = File.expand_path(@table_source_folder)
-    @table_dest_folder = File.expand_path(@table_dest_folder)
+    @table_source_folder     = File.expand_path(@table_source_folder)
+    @table_dest_folder       = File.expand_path(@table_dest_folder)
     @foreign_key_dest_folder = File.expand_path(@foreign_key_dest_folder)
-    @seed_data_dest_folder = File.expand_path(@seed_data_dest_folder)
+    @seed_data_dest_folder   = File.expand_path(@seed_data_dest_folder)
 
-    @database = config['database']['name']
-    @owner    = config['database']['owner']
+    @database                = config['database']['name']
+    @owner                   = config['database']['owner']
 
-    @db       = Database.new('HomeOfficeBilling', 'dbo')
+    @db                      = Database.new('HomeOfficeBilling', 'dbo')
     @db.load_yaml(@table_source_folder)
+
+    @foreign_key_sql_generator = ForeignKeySqlGenerator.new(@database, @owner, @foreign_key_dest_folder, options)
   end
 
 
@@ -82,39 +85,11 @@ class Generator
     Log.text "    Dest folder: #{File.expand_path(@foreign_key_dest_folder)}\n\n"
 
     get_tables_to_process(target_tables).each do |table|
-      delete_foreign_key_scripts(table.name) if @@options.is_clean_build?
-      table.columns.values.each do |column|
-        if column.is_fk? then
-          generate_foreign_key_sql(table.name, column.name, column.fk_table, column.fk_column)
-          count += 1
-        end
-      end
+      #delete_foreign_key_scripts(table.name) if @@options.is_clean_build?
+      count += @foreign_key_sql_generator.generate_sql table
     end
 
     Log.text "\n    #{count} foreign key(s) generated.\n\n"
-  end
-
-
-  def escape_filename_for_glob(file_name)
-    file_name
-      .gsub("[", "\\[")
-      .gsub("]", "\\]")
-      .gsub("{", "\\{")
-      .gsub("}", "\\}")
-  end
-
-
-  def delete_foreign_key_scripts(table_name)
-    dest_table = '*' # mask for foreign keys of all destination tables.
-    file_name_mask = get_foreign_key_filename(table_name, dest_table)
-
-    # Escape the [ and ] we use in our filenames since they are glob reserved chars.
-    file_name_mask = escape_filename_for_glob(file_name_mask)
-
-    Dir.glob(file_name_mask).each do |file_name|
-      Log.deleting file_name
-      File.delete file_name
-    end
   end
 
 
@@ -201,56 +176,6 @@ EOF
 EOF
       sql += closing_sql
     end
-
-    File.open(file_name, 'w') { |f| f.write(sql) }
-  end
-
-
-  def get_foreign_key_name(source_table, dest_table)
-    "#{source_table}_ForeignKey_#{dest_table}"
-  end
-
-
-  def get_foreign_key_filename(source_table, dest_table)
-    foreign_key_qualified_name = qualified( get_foreign_key_name(source_table, dest_table) )
-    File.join @foreign_key_dest_folder, "Create Foreign Key [#{foreign_key_qualified_name}].sql"
-  end
-
-
-  def generate_foreign_key_sql(source_table, source_column, dest_table, dest_column)
-
-    foreign_key_name            = get_foreign_key_name source_table, dest_table
-    foreign_key_qualified_name  = qualified foreign_key_name
-    source_table_qualified_name = qualified source_table
-    dest_table_qualified_name   = qualified dest_table
-
-    file_name                   = "#{@foreign_key_dest_folder}/Create Foreign Key [#{foreign_key_qualified_name}].sql"
-    Log.writing file_name
-
-    sql = <<EOF
------------------------------------------------------------------------------------------
-USE #{@database}
-GO
------------------------------------------------------------------------------------------
-
------------------------------------------------------------------------------------------
--- Create Foreign Key: #{source_table} => #{dest_table}
------------------------------------------------------------------------------------------
-IF OBJECT_ID('#{foreign_key_name}') IS NOT NULL
-   BEGIN
-      RAISERROR('Dropping foreign key: #{foreign_key_name}...',0,0) WITH NOWAIT;
-      ALTER TABLE #{source_table_qualified_name}
-         DROP CONSTRAINT #{foreign_key_name};
-   END
-GO
------------------------------------------------------------------------------------------
-RAISERROR('Creating foreign key: #{foreign_key_name}...',0,0) WITH NOWAIT;
-ALTER TABLE #{source_table_qualified_name}
-   ADD CONSTRAINT #{foreign_key_name}  FOREIGN KEY (#{source_column}) 
-       REFERENCES #{dest_table_qualified_name} (#{dest_column});
-GO
------------------------------------------------------------------------------------------	
-EOF
 
     File.open(file_name, 'w') { |f| f.write(sql) }
   end
