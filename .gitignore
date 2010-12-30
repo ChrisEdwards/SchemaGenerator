@@ -1,0 +1,25 @@
+# General ignore files.
+*.cache
+* Thumbs.db
+*.bak
+*.cache
+*.log
+*.Log
+*.swp
+*.user
+.svn
+.svn/*
+_compareTemp
+_notes
+_working
+_Working
+httpd.parse.errors
+ 
+# Office Temp Files
+~$* 
+ 
+# Other folders
+[Dd]eploy
+[Dd]eploy/*
+[Mm]etrics
+[Mm]etrics/*

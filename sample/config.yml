@@ -1,0 +1,12 @@
+database:
+  name: OrderSystem
+  owner: dbo
+
+source_folders:
+  tables: ./TableDefinitions
+    
+destination_folders:
+  tables: ./output/Tables
+  foreign_keys: ./output/ForeignKeys
+  indexes: ./output/Indexes
+  seed_data: ./output/SeedData

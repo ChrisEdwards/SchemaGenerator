@@ -1,0 +1,36 @@
+Categories:
+    description: The list of categories used to classify products.
+    
+    columns:
+        CategoryId:
+            type: int
+            primarykey: true
+            identity: true
+            description: The primary key of this table.
+        
+        Name:
+            type: varchar(50)
+            required: true
+            description: The category name.
+        
+        Description:
+            type: varchar(50)
+            description: The optional exteneded description of the category.
+        
+    constraints:
+        'unique nonclustered':
+            - [ Name ] # No two categories should have the same name.
+    
+    seed_data:
+        -
+            CategoryId: 1
+            Name: Laptops
+            Description: Laptops, Netbooks and Tablets
+        -
+            CategoryId: 2
+            Name: Desktops
+            Description: Desktop computers
+        -
+            CategoryId: 3
+            Name: Servers
+            Description: Enterprise server sytems.

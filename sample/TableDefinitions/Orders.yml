@@ -1,0 +1,22 @@
+Orders:
+    description: Contains the orders placed by our customers.
+    
+    columns:
+        OrderId:
+            type: int
+            primarykey: true
+            identity: true
+            description: The primary key of this table.
+        
+        CustomerId:
+            type: int
+            required: true
+            references:
+                table: Customers
+                column: CustomerId
+            description: The customer who placed this order.
+        
+        OrderDate:
+            type: date
+            required: true
+            description: The date the order was placed.

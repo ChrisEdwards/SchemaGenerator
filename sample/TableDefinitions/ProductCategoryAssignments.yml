@@ -1,0 +1,29 @@
+ProductCategoryAssignments:
+    description: The category to product associations.
+    
+    columns:
+        ProductCategoryAssignmentId:
+            type: int
+            primarykey: true
+            identity: true
+            description: The primary key of this table.
+                
+        ProductId:
+            type: int
+            required: true
+            references:
+                table: Products
+                column: ProductId
+            description: The product assigned to the specified category
+                
+        CategoryId:
+            type: int
+            required: true
+            references:
+                table: Categories
+                column: CategoryId
+            description: The category this product is assigned to.
+        
+    constraints:
+        'unique nonclustered':
+            - [ CategoryId, ProductId ]

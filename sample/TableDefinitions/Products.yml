@@ -1,0 +1,27 @@
+Products:
+    description: Contains the products available for order.
+    
+    columns:
+        ProductId:
+            type: int
+            primarykey: true
+            identity: true
+            description: The primary key of this table.
+        
+        Name:
+            type: varchar(50)
+            required: true
+            description: The name of this product.
+        
+        Description:
+            type: varchar(500)
+            description: The optional extended description of this product.
+        
+        Price:
+            type: money
+            required: true
+            description: The current price of this product.
+        
+    constraints:
+        'unique nonclustered':
+            - [ Name ] # No two products should have the same name.

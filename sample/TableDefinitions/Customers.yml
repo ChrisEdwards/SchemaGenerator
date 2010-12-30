@@ -1,0 +1,40 @@
+Customers:
+    description: Contains the customer information.
+    
+    columns:
+        CustomerId:
+            type: int
+            primarykey: true
+            identity: true
+            description: The primary key of this table.
+        
+        FirstName:
+            type: varchar(50)
+            required: true
+            description: The customers first name
+        
+        LastName:
+            type: varchar(50)
+            required: true
+            description: The customers last name
+        
+        Address1:
+            type: varchar(200)
+            description: The first line of the customers address.
+        
+        Address2:
+            type: varchar(200)
+            required: true
+            description: The second line of the customers address.
+        
+        City:
+            type: varchar(50)
+            description: The city.
+        
+        State:
+            type: varchar(2)
+            description: The 2 char abbreviation of the customers state.
+        
+        Zip:
+            type: varchar(10)
+            description: Customers zip code.

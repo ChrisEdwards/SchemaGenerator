@@ -1,0 +1,39 @@
+LineItems:
+    description: Contains the line items for each order.
+    
+    columns:
+        LineItemId:
+            type: int
+            primarykey: true
+            identity: true
+            description: The primary key of this table.
+        
+        OrderId:
+            type: int
+            required: true
+            references:
+                table: Orders
+                column: OrderId
+            description: The order this line item belongs to.
+        
+        ProductId:
+            type: int
+            required: true
+            references:
+                table: Products
+                column: ProductId
+            description: The product this line item is for.
+        
+        Quantity:
+            type: int
+            required: true
+            description: The quantity of this product that was ordered.
+        
+        ItemPrice:
+            type: money
+            required: true
+            description: The price of each item.
+        
+    constraints:
+        'unique nonclustered':
+            - [ ProductId, OrderId ] # Each order should only have one line-item per product. To add another, increment the quentity.
