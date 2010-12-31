@@ -15,7 +15,7 @@ class ForeignKeySqlGenerator < SqlGenerator
 
     table.columns.values.each do |column|
       if column.is_fk? then
-        generate_foreign_key_sql(table.db.name, table.name, column.name, column.fk_table, column.fk_column)
+        generate_foreign_key_sql(table.name, column.name, column.fk_table, column.fk_column)
         count += 1
       end
     end
@@ -47,7 +47,7 @@ class ForeignKeySqlGenerator < SqlGenerator
   end
 
 
-  def generate_foreign_key_sql(db_name, source_table, source_column, dest_table, dest_column)
+  def generate_foreign_key_sql(source_table, source_column, dest_table, dest_column)
 
     foreign_key_name            = get_object_name source_table, dest_table
     source_table_qualified_name = qualified source_table
@@ -58,7 +58,7 @@ class ForeignKeySqlGenerator < SqlGenerator
 
     sql = <<EOF
 -----------------------------------------------------------------------------------------
-USE #{db_name}
+USE #{@database}
 GO
 -----------------------------------------------------------------------------------------
 

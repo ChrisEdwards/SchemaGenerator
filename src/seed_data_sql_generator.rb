@@ -13,9 +13,9 @@ class SeedDataSqlGenerator < SqlGenerator
   def generate_sql(table)
     if table.has_seed_data? then
       generate_seed_data_sql table
-      1
+      1 # return that one script was generated
     else
-      0
+      0 # return that no script was generated
     end
   end
 
