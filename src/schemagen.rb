@@ -17,13 +17,12 @@ end
 # Script begins execution here.
 # =============================
 opts = Options.parse(ARGV)
-pp opts
+
+puts "\nSchemaGen v0.0.1".bright
+puts "http://github.com/ChrisEdwards/SchemaGenerator".bright
 
 generator = Generator.new(opts)
-
-generator.generate_table_scripts(opts.tables)
-generator.generate_foreign_key_scripts(opts.tables)
-generator.generate_seed_data_scripts(opts.tables)
+generator.generate_scripts(opts.tables)
 
 puts "\nGeneration complete.\n\n".color(:green).bright
 

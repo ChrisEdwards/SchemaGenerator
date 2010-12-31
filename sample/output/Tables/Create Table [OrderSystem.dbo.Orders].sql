@@ -17,15 +17,15 @@ CREATE TABLE OrderSystem.dbo.Orders
  OrderId                                            INT             IDENTITY(1,1)   -- The primary key of this table.
 ,CustomerId                                         INT             NOT NULL        -- The customer who placed this order. This is a foreign key that references Customers.CustomerId. 
 ,OrderDate                                          DATE            NOT NULL        -- The date the order was placed.
-	
+
  -- Audit Columns
 ,TimeInserted                                       DATETIME        NOT NULL
-      CONSTRAINT Orders_Default_TimeInserted  
+      CONSTRAINT Orders_Default_TimeInserted
       DEFAULT    (GETDATE())
 ,TimeUpdated                                        DATETIME        NOT NULL
       CONSTRAINT Orders_Default_TimeUpdated
       DEFAULT    (GETDATE())
-	
+
  -- Constraints
 ,CONSTRAINT Orders_PrimaryKey_OrderId
       PRIMARY KEY CLUSTERED (OrderId ASC)
@@ -35,7 +35,7 @@ GO
 --GRANT INSERT, UPDATE, DELETE, SELECT ON OrderSystem.dbo.Orders TO Public;
 --GO
 ---------------------------------------------------------------------------------------
-EXECUTE sys.sp_AddExtendedProperty 
+EXECUTE sys.sp_AddExtendedProperty
         @name=N'MS_Description'
        ,@value=N'Contains the orders placed by our customers.'
        ,@level0type=N'SCHEMA'
@@ -44,7 +44,7 @@ EXECUTE sys.sp_AddExtendedProperty
        ,@level1name=N'Orders'
 GO
 ---------------------------------------------------------------------------------------
-EXECUTE sys.sp_AddExtendedProperty 
+EXECUTE sys.sp_AddExtendedProperty
         @name=N'MS_Description'
        ,@value=N'The primary key of this table.'
        ,@level0type=N'SCHEMA'
@@ -55,7 +55,7 @@ EXECUTE sys.sp_AddExtendedProperty
        ,@level2name=N'OrderId'
 GO
 ---------------------------------------------------------------------------------------
-EXECUTE sys.sp_AddExtendedProperty 
+EXECUTE sys.sp_AddExtendedProperty
         @name=N'MS_Description'
        ,@value=N'The customer who placed this order. This is a foreign key that references Customers.CustomerId. '
        ,@level0type=N'SCHEMA'
@@ -66,7 +66,7 @@ EXECUTE sys.sp_AddExtendedProperty
        ,@level2name=N'CustomerId'
 GO
 ---------------------------------------------------------------------------------------
-EXECUTE sys.sp_AddExtendedProperty 
+EXECUTE sys.sp_AddExtendedProperty
         @name=N'MS_Description'
        ,@value=N'The date the order was placed.'
        ,@level0type=N'SCHEMA'

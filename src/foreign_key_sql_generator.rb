@@ -2,15 +2,16 @@ require File.expand_path(File.dirname(__FILE__) + '/sql_generator.rb')
 
 class ForeignKeySqlGenerator < SqlGenerator
 
-  def initialize(database, owner, dest_folder, options)
-    super(database,owner, dest_folder, options)
+
+  def object_type_name
+    "foreign key"
   end
 
 
+  private
+
   def generate_sql(table)
     count = 0
-
-    delete_existing_scripts(table.name) if @options.is_clean_build?
 
     table.columns.values.each do |column|
       if column.is_fk? then
@@ -23,11 +24,9 @@ class ForeignKeySqlGenerator < SqlGenerator
   end
 
 
-  def delete_existing_scripts(table_name)
-    dest_table     = '*' # mask for foreign keys of all destination tables.
-    file_name_mask = get_filename(table_name, dest_table)
-
-    # Escape the [ and ] we use in our filenames since they are glob reserved chars.
+  def delete_existing_scripts(table)
+    any_dest_table = '*' # mask to match foreign key scripts for any destination table.
+    file_name_mask = get_script_filename(table.name, any_dest_table)
     file_name_mask = escape_filename_for_glob(file_name_mask)
 
     Dir.glob(file_name_mask).each do |file_name|
@@ -42,7 +41,7 @@ class ForeignKeySqlGenerator < SqlGenerator
   end
 
 
-  def get_filename(source_table, dest_table)
+  def get_script_filename(source_table, dest_table)
     foreign_key_qualified_name = qualified(get_object_name(source_table, dest_table))
     File.join @dest_folder, "Create Foreign Key [#{foreign_key_qualified_name}].sql"
   end
@@ -54,7 +53,7 @@ class ForeignKeySqlGenerator < SqlGenerator
     source_table_qualified_name = qualified source_table
     dest_table_qualified_name   = qualified dest_table
 
-    file_name                   = get_filename source_table, dest_table
+    file_name                   = get_script_filename source_table, dest_table
     Log.writing file_name
 
     sql = <<EOF
@@ -84,9 +83,6 @@ EOF
 
     File.open(file_name, 'w') { |f| f.write(sql) }
   end
-
-
-
 
 
 end

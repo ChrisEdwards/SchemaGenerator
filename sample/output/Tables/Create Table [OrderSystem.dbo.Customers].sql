@@ -22,15 +22,15 @@ CREATE TABLE OrderSystem.dbo.Customers
 ,City                                               VARCHAR(50)         NULL        -- The city.
 ,State                                              VARCHAR(2)          NULL        -- The 2 char abbreviation of the customers state.
 ,Zip                                                VARCHAR(10)         NULL        -- Customers zip code.
-	
+
  -- Audit Columns
 ,TimeInserted                                       DATETIME        NOT NULL
-      CONSTRAINT Customers_Default_TimeInserted  
+      CONSTRAINT Customers_Default_TimeInserted
       DEFAULT    (GETDATE())
 ,TimeUpdated                                        DATETIME        NOT NULL
       CONSTRAINT Customers_Default_TimeUpdated
       DEFAULT    (GETDATE())
-	
+
  -- Constraints
 ,CONSTRAINT Customers_PrimaryKey_CustomerId
       PRIMARY KEY CLUSTERED (CustomerId ASC)
@@ -40,7 +40,7 @@ GO
 --GRANT INSERT, UPDATE, DELETE, SELECT ON OrderSystem.dbo.Customers TO Public;
 --GO
 ---------------------------------------------------------------------------------------
-EXECUTE sys.sp_AddExtendedProperty 
+EXECUTE sys.sp_AddExtendedProperty
         @name=N'MS_Description'
        ,@value=N'Contains the customer information.'
        ,@level0type=N'SCHEMA'
@@ -49,7 +49,7 @@ EXECUTE sys.sp_AddExtendedProperty
        ,@level1name=N'Customers'
 GO
 ---------------------------------------------------------------------------------------
-EXECUTE sys.sp_AddExtendedProperty 
+EXECUTE sys.sp_AddExtendedProperty
         @name=N'MS_Description'
        ,@value=N'The primary key of this table.'
        ,@level0type=N'SCHEMA'
@@ -60,7 +60,7 @@ EXECUTE sys.sp_AddExtendedProperty
        ,@level2name=N'CustomerId'
 GO
 ---------------------------------------------------------------------------------------
-EXECUTE sys.sp_AddExtendedProperty 
+EXECUTE sys.sp_AddExtendedProperty
         @name=N'MS_Description'
        ,@value=N'The customers first name'
        ,@level0type=N'SCHEMA'
@@ -71,7 +71,7 @@ EXECUTE sys.sp_AddExtendedProperty
        ,@level2name=N'FirstName'
 GO
 ---------------------------------------------------------------------------------------
-EXECUTE sys.sp_AddExtendedProperty 
+EXECUTE sys.sp_AddExtendedProperty
         @name=N'MS_Description'
        ,@value=N'The customers last name'
        ,@level0type=N'SCHEMA'
@@ -82,7 +82,7 @@ EXECUTE sys.sp_AddExtendedProperty
        ,@level2name=N'LastName'
 GO
 ---------------------------------------------------------------------------------------
-EXECUTE sys.sp_AddExtendedProperty 
+EXECUTE sys.sp_AddExtendedProperty
         @name=N'MS_Description'
        ,@value=N'The first line of the customers address.'
        ,@level0type=N'SCHEMA'
@@ -93,7 +93,7 @@ EXECUTE sys.sp_AddExtendedProperty
        ,@level2name=N'Address1'
 GO
 ---------------------------------------------------------------------------------------
-EXECUTE sys.sp_AddExtendedProperty 
+EXECUTE sys.sp_AddExtendedProperty
         @name=N'MS_Description'
        ,@value=N'The second line of the customers address.'
        ,@level0type=N'SCHEMA'
@@ -104,7 +104,7 @@ EXECUTE sys.sp_AddExtendedProperty
        ,@level2name=N'Address2'
 GO
 ---------------------------------------------------------------------------------------
-EXECUTE sys.sp_AddExtendedProperty 
+EXECUTE sys.sp_AddExtendedProperty
         @name=N'MS_Description'
        ,@value=N'The city.'
        ,@level0type=N'SCHEMA'
@@ -115,7 +115,7 @@ EXECUTE sys.sp_AddExtendedProperty
        ,@level2name=N'City'
 GO
 ---------------------------------------------------------------------------------------
-EXECUTE sys.sp_AddExtendedProperty 
+EXECUTE sys.sp_AddExtendedProperty
         @name=N'MS_Description'
        ,@value=N'The 2 char abbreviation of the customers state.'
        ,@level0type=N'SCHEMA'
@@ -126,7 +126,7 @@ EXECUTE sys.sp_AddExtendedProperty
        ,@level2name=N'State'
 GO
 ---------------------------------------------------------------------------------------
-EXECUTE sys.sp_AddExtendedProperty 
+EXECUTE sys.sp_AddExtendedProperty
         @name=N'MS_Description'
        ,@value=N'Customers zip code.'
        ,@level0type=N'SCHEMA'

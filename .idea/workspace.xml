@@ -2,15 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3a075526-d45b-4b5f-811f-f746b18d275c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/foreign_key_sql_generator.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sql_generator.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sample/output/ForeignKeys/Create Foreign Key [OrderSystem.dbo.LineItems_ForeignKey_Orders].sql" afterPath="$PROJECT_DIR$/sample/output/ForeignKeys/Create Foreign Key [OrderSystem.dbo.LineItems_ForeignKey_Orders].sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sample/output/ForeignKeys/Create Foreign Key [OrderSystem.dbo.LineItems_ForeignKey_Products].sql" afterPath="$PROJECT_DIR$/sample/output/ForeignKeys/Create Foreign Key [OrderSystem.dbo.LineItems_ForeignKey_Products].sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sample/output/ForeignKeys/Create Foreign Key [OrderSystem.dbo.Orders_ForeignKey_Customers].sql" afterPath="$PROJECT_DIR$/sample/output/ForeignKeys/Create Foreign Key [OrderSystem.dbo.Orders_ForeignKey_Customers].sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sample/output/ForeignKeys/Create Foreign Key [OrderSystem.dbo.ProductCategoryAssignments_ForeignKey_Categories].sql" afterPath="$PROJECT_DIR$/sample/output/ForeignKeys/Create Foreign Key [OrderSystem.dbo.ProductCategoryAssignments_ForeignKey_Categories].sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sample/output/ForeignKeys/Create Foreign Key [OrderSystem.dbo.ProductCategoryAssignments_ForeignKey_Products].sql" afterPath="$PROJECT_DIR$/sample/output/ForeignKeys/Create Foreign Key [OrderSystem.dbo.ProductCategoryAssignments_ForeignKey_Products].sql" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/seed_data_sql_generator.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/table_sql_generator.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sample/output/SeedData/Load seed data for [OrderSystem.dbo.Categories].sql" afterPath="$PROJECT_DIR$/sample/output/SeedData/Load seed data for [OrderSystem.dbo.Categories].sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sample/output/Tables/Create Table [OrderSystem.dbo.Categories].sql" afterPath="$PROJECT_DIR$/sample/output/Tables/Create Table [OrderSystem.dbo.Categories].sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sample/output/Tables/Create Table [OrderSystem.dbo.Customers].sql" afterPath="$PROJECT_DIR$/sample/output/Tables/Create Table [OrderSystem.dbo.Customers].sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sample/output/Tables/Create Table [OrderSystem.dbo.LineItems].sql" afterPath="$PROJECT_DIR$/sample/output/Tables/Create Table [OrderSystem.dbo.LineItems].sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sample/output/Tables/Create Table [OrderSystem.dbo.Orders].sql" afterPath="$PROJECT_DIR$/sample/output/Tables/Create Table [OrderSystem.dbo.Orders].sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sample/output/Tables/Create Table [OrderSystem.dbo.ProductCategoryAssignments].sql" afterPath="$PROJECT_DIR$/sample/output/Tables/Create Table [OrderSystem.dbo.ProductCategoryAssignments].sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sample/output/Tables/Create Table [OrderSystem.dbo.Products].sql" afterPath="$PROJECT_DIR$/sample/output/Tables/Create Table [OrderSystem.dbo.Products].sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sample/generate.bat" afterPath="$PROJECT_DIR$/sample/generate.bat" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/foreign_key_sql_generator.rb" afterPath="$PROJECT_DIR$/src/foreign_key_sql_generator.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/generator.rb" afterPath="$PROJECT_DIR$/src/generator.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/schemagen.rb" afterPath="$PROJECT_DIR$/src/schemagen.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sql_generator.rb" afterPath="$PROJECT_DIR$/src/sql_generator.rb" />
     </list>
     <ignored path="SchemaGen.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,19 +42,37 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf>
-          <file leaf-file-name="generator.rb" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="generator.rb" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/generator.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="46" column="50" selection-start="1854" selection-end="1854" vertical-scroll-proportion="0.59928656">
+                <state line="74" column="5" selection-start="2957" selection-end="2957" vertical-scroll-proportion="0.0">
+                  <folding>
+                    <marker date="1293812419694" expanded="true" signature="275:2341" placeholder=" ... end" />
+                    <marker date="1293812419694" expanded="true" signature="706:844" placeholder="if ... end" />
+                    <marker date="1293812419694" expanded="true" signature="849:990" placeholder="if ... end" />
+                    <marker date="1293812419694" expanded="true" signature="995:1148" placeholder="if ... end" />
+                    <marker date="1293812419694" expanded="true" signature="1153:1302" placeholder="if ... end" />
+                    <marker date="1293812419694" expanded="true" signature="2381:2957" placeholder=" ... end" />
+                    <marker date="1293812419694" expanded="true" signature="2403:2951" placeholder="do ... end" />
+                    <marker date="1293812419694" expanded="true" signature="2760:2855" placeholder="do ... end" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="schemagen.rb" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/schemagen.rb">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="14" column="0" selection-start="273" selection-end="273" vertical-scroll-proportion="0.20095694">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="schemagen.rb" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/schemagen.rb">
+          <file leaf-file-name="options.rb" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/options.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="1" column="13" selection-start="28" selection-end="28" vertical-scroll-proportion="0.0">
+                <state line="7" column="51" selection-start="123" selection-end="123" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -76,10 +100,28 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="foreign_key_sql_generator.rb" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="foreign_key_sql_generator.rb" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/foreign_key_sql_generator.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="5" column="9" selection-start="182" selection-end="182" vertical-scroll-proportion="0.07134364">
+                <state line="7" column="5" selection-start="164" selection-end="164" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="table_sql_generator.rb" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/table_sql_generator.rb">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="7" column="5" selection-start="153" selection-end="153" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="seed_data_sql_generator.rb" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/seed_data_sql_generator.rb">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="7" column="5" selection-start="160" selection-end="160" vertical-scroll-proportion="0.102065615">
                   <folding />
                 </state>
               </provider>
@@ -88,7 +130,7 @@
           <file leaf-file-name="sql_generator.rb" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/sql_generator.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+                <state line="29" column="5" selection-start="590" selection-end="664" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -131,8 +173,13 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/src/sql_script_factory.rb" />
-        <option value="$PROJECT_DIR$/src/generator.rb" />
+        <option value="$PROJECT_DIR$/src/sql_generator.rb" />
         <option value="$PROJECT_DIR$/src/foreign_key_sql_generator.rb" />
+        <option value="$PROJECT_DIR$/src/table_sql_generator.rb" />
+        <option value="$PROJECT_DIR$/src/seed_data_sql_generator.rb" />
+        <option value="$PROJECT_DIR$/src/generator.rb" />
+        <option value="$PROJECT_DIR$/src/options.rb" />
+        <option value="$PROJECT_DIR$/src/schemagen.rb" />
       </list>
     </option>
   </component>
@@ -245,7 +292,7 @@
     <frame x="-8" y="-8" width="1296" height="1010" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291714" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291714" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
@@ -294,13 +341,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/schemagen.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="13" selection-start="28" selection-end="28" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/table.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="28" column="0" selection-start="733" selection-end="733" vertical-scroll-proportion="0.0">
@@ -317,21 +357,58 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sql_generator.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/generator.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="50" selection-start="1854" selection-end="1854" vertical-scroll-proportion="0.59928656">
+        <state line="29" column="5" selection-start="590" selection-end="664" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/foreign_key_sql_generator.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="9" selection-start="182" selection-end="182" vertical-scroll-proportion="0.07134364">
+        <state line="7" column="5" selection-start="164" selection-end="164" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/table_sql_generator.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="5" selection-start="153" selection-end="153" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/seed_data_sql_generator.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="5" selection-start="160" selection-end="160" vertical-scroll-proportion="0.102065615">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/generator.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="5" selection-start="2957" selection-end="2957" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1293812419694" expanded="true" signature="275:2341" placeholder=" ... end" />
+            <marker date="1293812419694" expanded="true" signature="706:844" placeholder="if ... end" />
+            <marker date="1293812419694" expanded="true" signature="849:990" placeholder="if ... end" />
+            <marker date="1293812419694" expanded="true" signature="995:1148" placeholder="if ... end" />
+            <marker date="1293812419694" expanded="true" signature="1153:1302" placeholder="if ... end" />
+            <marker date="1293812419694" expanded="true" signature="2381:2957" placeholder=" ... end" />
+            <marker date="1293812419694" expanded="true" signature="2403:2951" placeholder="do ... end" />
+            <marker date="1293812419694" expanded="true" signature="2760:2855" placeholder="do ... end" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/options.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="51" selection-start="123" selection-end="123" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/schemagen.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="0" selection-start="273" selection-end="273" vertical-scroll-proportion="0.20095694">
           <folding />
         </state>
       </provider>

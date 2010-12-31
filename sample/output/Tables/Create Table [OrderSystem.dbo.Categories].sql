@@ -17,20 +17,20 @@ CREATE TABLE OrderSystem.dbo.Categories
  CategoryId                                         INT             IDENTITY(1,1)   -- The primary key of this table.
 ,Name                                               VARCHAR(50)     NOT NULL        -- The category name.
 ,Description                                        VARCHAR(50)         NULL        -- The optional exteneded description of the category.
-	
+
  -- Audit Columns
 ,TimeInserted                                       DATETIME        NOT NULL
-      CONSTRAINT Categories_Default_TimeInserted  
+      CONSTRAINT Categories_Default_TimeInserted
       DEFAULT    (GETDATE())
 ,TimeUpdated                                        DATETIME        NOT NULL
       CONSTRAINT Categories_Default_TimeUpdated
       DEFAULT    (GETDATE())
-	
+
  -- Constraints
 ,CONSTRAINT Categories_PrimaryKey_CategoryId
       PRIMARY KEY CLUSTERED (CategoryId ASC)
 
-,CONSTRAINT Categories_UniqueKey_Name 
+,CONSTRAINT Categories_UniqueKey_Name
       UNIQUE NONCLUSTERED   (Name ASC)
 )
 GO
@@ -38,7 +38,7 @@ GO
 --GRANT INSERT, UPDATE, DELETE, SELECT ON OrderSystem.dbo.Categories TO Public;
 --GO
 ---------------------------------------------------------------------------------------
-EXECUTE sys.sp_AddExtendedProperty 
+EXECUTE sys.sp_AddExtendedProperty
         @name=N'MS_Description'
        ,@value=N'The list of categories used to classify products.'
        ,@level0type=N'SCHEMA'
@@ -47,7 +47,7 @@ EXECUTE sys.sp_AddExtendedProperty
        ,@level1name=N'Categories'
 GO
 ---------------------------------------------------------------------------------------
-EXECUTE sys.sp_AddExtendedProperty 
+EXECUTE sys.sp_AddExtendedProperty
         @name=N'MS_Description'
        ,@value=N'The primary key of this table.'
        ,@level0type=N'SCHEMA'
@@ -58,7 +58,7 @@ EXECUTE sys.sp_AddExtendedProperty
        ,@level2name=N'CategoryId'
 GO
 ---------------------------------------------------------------------------------------
-EXECUTE sys.sp_AddExtendedProperty 
+EXECUTE sys.sp_AddExtendedProperty
         @name=N'MS_Description'
        ,@value=N'The category name.'
        ,@level0type=N'SCHEMA'
@@ -69,7 +69,7 @@ EXECUTE sys.sp_AddExtendedProperty
        ,@level2name=N'Name'
 GO
 ---------------------------------------------------------------------------------------
-EXECUTE sys.sp_AddExtendedProperty 
+EXECUTE sys.sp_AddExtendedProperty
         @name=N'MS_Description'
        ,@value=N'The optional exteneded description of the category.'
        ,@level0type=N'SCHEMA'

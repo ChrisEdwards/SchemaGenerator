@@ -17,20 +17,20 @@ CREATE TABLE OrderSystem.dbo.ProductCategoryAssignments
  ProductCategoryAssignmentId                        INT             IDENTITY(1,1)   -- The primary key of this table.
 ,ProductId                                          INT             NOT NULL        -- The product assigned to the specified category This is a foreign key that references Products.ProductId. 
 ,CategoryId                                         INT             NOT NULL        -- The category this product is assigned to. This is a foreign key that references Categories.CategoryId. 
-	
+
  -- Audit Columns
 ,TimeInserted                                       DATETIME        NOT NULL
-      CONSTRAINT ProductCategoryAssignments_Default_TimeInserted  
+      CONSTRAINT ProductCategoryAssignments_Default_TimeInserted
       DEFAULT    (GETDATE())
 ,TimeUpdated                                        DATETIME        NOT NULL
       CONSTRAINT ProductCategoryAssignments_Default_TimeUpdated
       DEFAULT    (GETDATE())
-	
+
  -- Constraints
 ,CONSTRAINT ProductCategoryAssignments_PrimaryKey_ProductCategoryAssignmentId
       PRIMARY KEY CLUSTERED (ProductCategoryAssignmentId ASC)
 
-,CONSTRAINT ProductCategoryAssignments_UniqueKey_CategoryIdProductId 
+,CONSTRAINT ProductCategoryAssignments_UniqueKey_CategoryIdProductId
       UNIQUE NONCLUSTERED   (CategoryId ASC, ProductId ASC)
 )
 GO
@@ -38,7 +38,7 @@ GO
 --GRANT INSERT, UPDATE, DELETE, SELECT ON OrderSystem.dbo.ProductCategoryAssignments TO Public;
 --GO
 ---------------------------------------------------------------------------------------
-EXECUTE sys.sp_AddExtendedProperty 
+EXECUTE sys.sp_AddExtendedProperty
         @name=N'MS_Description'
        ,@value=N'The category to product associations.'
        ,@level0type=N'SCHEMA'
@@ -47,7 +47,7 @@ EXECUTE sys.sp_AddExtendedProperty
        ,@level1name=N'ProductCategoryAssignments'
 GO
 ---------------------------------------------------------------------------------------
-EXECUTE sys.sp_AddExtendedProperty 
+EXECUTE sys.sp_AddExtendedProperty
         @name=N'MS_Description'
        ,@value=N'The primary key of this table.'
        ,@level0type=N'SCHEMA'
@@ -58,7 +58,7 @@ EXECUTE sys.sp_AddExtendedProperty
        ,@level2name=N'ProductCategoryAssignmentId'
 GO
 ---------------------------------------------------------------------------------------
-EXECUTE sys.sp_AddExtendedProperty 
+EXECUTE sys.sp_AddExtendedProperty
         @name=N'MS_Description'
        ,@value=N'The product assigned to the specified category This is a foreign key that references Products.ProductId. '
        ,@level0type=N'SCHEMA'
@@ -69,7 +69,7 @@ EXECUTE sys.sp_AddExtendedProperty
        ,@level2name=N'ProductId'
 GO
 ---------------------------------------------------------------------------------------
-EXECUTE sys.sp_AddExtendedProperty 
+EXECUTE sys.sp_AddExtendedProperty
         @name=N'MS_Description'
        ,@value=N'The category this product is assigned to. This is a foreign key that references Categories.CategoryId. '
        ,@level0type=N'SCHEMA'
